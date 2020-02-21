@@ -60,6 +60,29 @@ The express server will receive the query. It will then make an HTTP request to 
     - In order to be async, resolve should return a promise. If a promise is returned, GraphQL automatically detects this and waits for the promise to resolve. This is very cool.
     - axios has a quirk when integrated with GraphQL. It nests data in a "data" property. GraphQL doesn't know that.
 
+* Query Fragments
+    - used to avoid duplication and copy/paste. Essentially a list of differrent properties that can be reused when querying and entity. Fragments are primarily used on the front end.
+
+    ```javascript
+        {
+            apple: company(id: "1"){
+                ...companyDetails,
+            }
+            google: company(id: "2"){
+                ...companyDetails,
+            }
+        }
+        fragment companyDetails on Company {
+            id
+            name
+            description
+        }
+    ```
+    the "on Company" bit ensures type checking.
+
+* Mutations
+    - somewhat challengin in GraphQL
+
 # json-server
 
 json-server automatically sets up relations behind the scenes.
