@@ -1,4 +1,6 @@
-# RESTful - routing
+# Course notes
+
+## RESTful - routing
 Given a collection of records on a server, there should be a uniform URL and HTTP request method used to utilize that collection of records
 
 ## Shortcomings of RESTful Routing
@@ -10,13 +12,13 @@ Given a collection of records on a server, there should be a uniform URL and HTT
     - I have seen summary and detail versions of models as a solution for RESTful APIs
     - This is also important for mobile data. Smaller responses.
 
-The point of GraphQL is to solve these issues, among some others.
+The point of GraphQL is to solve these issues among some others.
 
-# App to build
+## First application: Graphiql client with GraphQl
 
 Client ---> Express/GraphQL Server ---> Datastore
 
-# Large Companies
+## Large Companies
 
 Large companies often don't have a large monolithic data store. There are usually a collection of systems responsible for certain pieces of data.
                        Client
@@ -44,7 +46,7 @@ Outside Server #1      Outside API             Outside Server #2
 
 The express server will receive the query. It will then make an HTTP request to some other API and fetch the data. Then it will assemble a GraphQL response and ship it back to the client. Simple.
 
-# GraphQL
+## GraphQL
 
 * Not changing how the data is stored
 
@@ -61,7 +63,7 @@ The express server will receive the query. It will then make an HTTP request to 
     - axios has a quirk when integrated with GraphQL. It nests data in a "data" property. GraphQL doesn't know that.
 
 * Query Fragments
-    - used to avoid duplication and copy/paste. Essentially a list of differrent properties that can be reused when querying and entity. Fragments are primarily used on the front end.
+    - used to avoid duplication and copy/paste. Essentially a list of different properties that can be reused when querying and entity. Fragments are primarily used on the front end.
 
     ```javascript
         {
@@ -81,22 +83,22 @@ The express server will receive the query. It will then make an HTTP request to 
     the "on Company" bit ensures type checking.
 
 * Mutations
-    - somewhat challengin in GraphQL
+    - somewhat challenging in GraphQL
 
-# json-server
+## json-server
 
 json-server automatically sets up relations behind the scenes.
 
-# Application: React with GraphQl
+## Second Application: React with GraphQl
 React Client ---> GraphQL Client ---> Express/GraphQL Server ---> Datastore
 
 ### GraphQL Client
 
-A GraphQL Client is a glue layer between React Client and Express/GraphQL Server. It's purpose is to communicate/interace with the Express/GraphQL Server and forward it on to the (in this case) React client. You could build your client using another framework like Vue or Angular though.
+A GraphQL Client is a glue layer between a React Client and Express/GraphQL Server. Its purpose is to communicate/interface with the Express/GraphQL Server and forward it on to the (in this case) React client. You could build your client using another framework like Vue or Angular though.
 
 GraphQL Client & Express/GraphQL Server are very loosely coupled as the protocol that links them is framework agnostic
 
-Three big clients in user are Lokka, Apollo and Relay. These are browser, not backend technologies. Will be using Apollo for this project.
+Three big clients in use are Lokka, Apollo and Relay. These are browser, not backend technologies. We will be using Apollo for this project.
 
 Side note: V1 Relay is amazingly performant for mobile users with an unstable data connection. But it's very complex. Probably overkill for most applications.
 
@@ -108,4 +110,4 @@ However, on the backend, we are continuing to use express-graphq server instead 
 
 express-graphql also ensures you co-locate your types and resolvers. Apollo insists you separate those.
 
-It's worth nothing that apollo is not a bad tool and it is valid to use it.
+It's worth noting that apollo is not a bad tool and it is valid to use it.
