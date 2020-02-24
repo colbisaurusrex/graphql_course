@@ -1,11 +1,57 @@
 {
-    "users": [
-        { "id": "23", "firstName": "Bill", "age": 20, "companyId": "1" },
-        { "id": "40", "firstName": "Alex", "age": 40, "companyId": "2" },
-        { "id": "41", "firstName": "Nick", "age": 30, "companyId": "2" }
-    ],
-    "companies": [
-        { "id": "1", "name": "Apple", "description": "iphone" },
-        { "id": "2", "name": "Google", "description": "search" }
-    ]
+  "users": [
+    {
+      "id": "23",
+      "firstName": "Bill",
+      "age": 20,
+      "companyId": "1"
+    },
+    {
+      "id": "40",
+      "firstName": "Alex",
+      "age": 40,
+      "companyId": "2"
+    },
+    {
+      "id": "41",
+      "firstName": "Nick",
+      "age": 30,
+      "companyId": "2"
+    },
+    {
+      "firstName": "Colby",
+      "age": 34,
+      "id": "8xYrAZo",
+      "companyId": "2"
+    },
+    {
+      "firstName": "Barton",
+      "age": 34,
+      "id": "MBV0KxW",
+      "companyId": "1"
+    },
+    {
+      "firstName": "Amy",
+      "age": 30,
+      "id": "NQC5wrv",
+      "companyId": "1"
+    },
+    {
+      "firstName": "John",
+      "age": 33,
+      "id": "YvKnx_2"
+    }
+  ],
+  "companies": [
+    {
+      "id": "1",
+      "name": "Apple",
+      "description": "iphone"
+    },
+    {
+      "id": "2",
+      "name": "Google",
+      "description": "search"
+    }
+  ]
 }

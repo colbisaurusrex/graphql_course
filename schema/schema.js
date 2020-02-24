@@ -22,7 +22,7 @@ const CompanyType = new GraphQLObjectType({
             type: new GraphQLList(UserType), // Tells GraphQL there are multiple users, aka 1:many relationship
             resolve(parentValue, args) {
                 return axios.get(`http://localhost:3000/companies/${parentValue.id}/users`)
-                    .then(resp => resp.data)
+                    .then(res => res.data)
             }
         }
     })
@@ -39,7 +39,7 @@ const UserType = new GraphQLObjectType({
             type: CompanyType,
             resolve(parentValue, args) {
                 return axios.get(`http://localhost:3000/companies/${parentValue.companyId}`)
-                    .then(resp => resp.data)
+                    .then(res => res.data)
            }
             /*
                 ...here.
@@ -60,7 +60,7 @@ const RootQuery = new GraphQLObjectType({
             resolve(parentValue, args) {
                 // parentValue is hardly ever used
                 return axios.get(`http://localhost:3000/users/${args.id}`)
-                    .then(resp => resp.data)
+                    .then(res => res.data)
             }
         },
         company: {
@@ -68,7 +68,7 @@ const RootQuery = new GraphQLObjectType({
             args: { id: { type: GraphQLString }},
             resolve(parentValue, args) {
                 return axios.get(`http://localhost:3000/companies/${args.id}`)
-                    .then(resp => resp.data)
+                    .then(res => res.data)
             }
         }
     }
@@ -82,18 +82,45 @@ const mutation = new GraphQLObjectType({
             // type of data we are returning from the resolve function. With mutations, the collection of data you are operating on doesn't always match they type you return. But most of the time you do.
             type: UserType,
             args: {
-                // GraphQLNonNull tells are schema that when this mutation is attempted, these values must be supplied.
+                // GraphQLNonNull tells our schema that when this mutation is attempted, these values must be supplied.
                 firstName: { type: new GraphQLNonNull(GraphQLString) },
                 age: { type: new GraphQLNonNull(GraphQLInt) },
                 companyId: { type: GraphQLString }
             },
-            resolve(){
-
+            resolve(parentValue, { firstName, age }){
+                return axios.post(`http://localhost:3000/users`, { firstName, age })
+                    .then(res => res.data)
+            }
+        },
+        deleteUser: {
+            type: UserType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLString) }
+            },
+            resolve(parentValue, { id }) {
+                return axios.delete(`http://localhost:3000/users/${id}`)
+                    .then(res => res.data)
+            }
+        },
+        editUser: {
+            type: UserType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLString) },
+                firstName: { type: GraphQLString },
+                age: { type: GraphQLInt },
+                companyId: { type: GraphQLString }
+            },
+            // As a reminder, PUT requests completely overwrites a record. A PATCH request only overwrites the properties contained in the request body
+            resolve(parentValue, args) {
+                // json-server ignores id property in args on patch and put request bodies, so there is no chance that id is mutated
+                return axios.patch(`http://localhost:3000/users/${args.id}`, args)
+                    .then(res => res.data)
             }
         }
     }
 })
 
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation,
 })
