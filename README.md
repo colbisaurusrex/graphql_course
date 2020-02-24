@@ -86,3 +86,26 @@ The express server will receive the query. It will then make an HTTP request to 
 # json-server
 
 json-server automatically sets up relations behind the scenes.
+
+# Application: React with GraphQl
+React Client ---> GraphQL Client ---> Express/GraphQL Server ---> Datastore
+
+### GraphQL Client
+
+A GraphQL Client is a glue layer between React Client and Express/GraphQL Server. It's purpose is to communicate/interace with the Express/GraphQL Server and forward it on to the (in this case) React client. You could build your client using another framework like Vue or Angular though.
+
+GraphQL Client & Express/GraphQL Server are very loosely coupled as the protocol that links them is framework agnostic
+
+Three big clients in user are Lokka, Apollo and Relay. These are browser, not backend technologies. Will be using Apollo for this project.
+
+Side note: V1 Relay is amazingly performant for mobile users with an unstable data connection. But it's very complex. Probably overkill for most applications.
+
+### Apollo
+
+Apollo has a good balance of features and complexity.
+
+However, on the backend, we are continuing to use express-graphq server instead of the apollo server. This is because the apollo server is still in active development and express-graphql is much less likely to get API changes in the future. express-graphql is the official implementation that Facebook maintains. It is the spec for how a server can be integrated with a server.
+
+express-graphql also ensures you co-locate your types and resolvers. Apollo insists you separate those.
+
+It's worth nothing that apollo is not a bad tool and it is valid to use it.
