@@ -111,3 +111,10 @@ However, on the backend, we are continuing to use express-graphq server instead 
 express-graphql also ensures you co-locate your types and resolvers. Apollo insists you separate those.
 
 It's worth noting that apollo is not a bad tool and it is valid to use it.
+
+### Overall Strategy
+
+1. Identify data required
+2. Write query in Graphiql(for practice) and in component file
+3. Bond query + component
+4. Access data!
