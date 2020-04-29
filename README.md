@@ -118,3 +118,15 @@ It's worth noting that apollo is not a bad tool and it is valid to use it.
 2. Write query in Graphiql(for practice) and in component file
 3. Bond query + component
 4. Access data!
+
+### App Architecture
+![App Architecture](./assets/App_architecture.png)
+
+### Client-side Architecture
+- GraphQL Server - hosting the data.
+- Apollo Store - point of contact with GraphQL server. Makes sure the data we fetch is distributed throughout the app.
+- Apollo Provider - integration point between react app and Apollo Store
+- Song List - in GraphQL/Apollo apps, we tend to pick centralized components to receiving queries or data from the GraphQL server. Then we pass data from them down to child components.
+
+![Client-side Architecture](./assets/client_side_architecture.png)
+![Client-side Alternate Architecture](./assets/client_side_alternate_architecture.png)
