@@ -9,7 +9,12 @@ import SongList from './components/SongList.jsx';
 import SongCreate from './components/SongCreate.jsx';
 import SongDetail from './components/SongDetail.jsx';
 
-const client = new ApolloClient({});
+const client = new ApolloClient({
+  /*
+    "o" short for object. Every piece of data fetched by Apollo client is ran through this function. Use the id to uniquely identify the record. This only works when all the ids of the entities in our application are unique.
+  */
+  dataIdFromObject: o => o.id
+});
 
 const Root = () => {
   return (
