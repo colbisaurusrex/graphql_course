@@ -130,3 +130,11 @@ It's worth noting that apollo is not a bad tool and it is valid to use it.
 
 ![Client-side Architecture](./assets/client_side_architecture.png)
 ![Client-side Alternate Architecture](./assets/client_side_alternate_architecture.png)
+
+
+### Optimistic Updates
+![Optimistic Updates](./assets/Apollo_optimistic_updates.png)
+
+For mutations, look at the response and then create your optimisticResponse based on it. It should be exact.
+
+What happens if we guess what the response will be incorrectly? The eventual response from the backend will be the source of truth and will update Apollo store accordingly. Perhaps there will be some strange UX, but ultimately it will resolve itself correctly.

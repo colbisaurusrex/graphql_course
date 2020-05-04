@@ -15,6 +15,7 @@ class SongCreate extends Component {
         event.preventDefault();
         return this.props.mutate({
             variables:  { title: this.state.title },
+            // This is somewhat inefficient because it makes another request to the backend. Using dataIdFromObject is more performant.
             refetchQueries: [{ query }]
         })
         .then(() => hashHistory.push('/'));
