@@ -138,3 +138,23 @@ It's worth noting that apollo is not a bad tool and it is valid to use it.
 For mutations, look at the response and then create your optimisticResponse based on it. It should be exact.
 
 What happens if we guess what the response will be incorrectly? The eventual response from the backend will be the source of truth and will update Apollo store accordingly. Perhaps there will be some strange UX, but ultimately it will resolve itself correctly.
+
+## Third Application: Building from scratch
+### Authentication
+
+- Passport JS - defacto authentication library for Node but not built with GraphQL in mind
+
+There is a lot of logic in the AuthService that glues passport together with graphql. They don't interface well.
+
+This section is a good example of how to ensure business logic is delegated to a service or function. You want to avoid place your logic in resolve functions.
+
+### Setting up Apollo
+
+Remember, the ApolloClient is just the piece of technology that interfaces with our backend; it has no idea how to interface with out React application. That is the job of the Apollo Provider - a glue layer between the Apollo Client that fetches all the data and our React client that displays all the data.
+
+## My app
+
+- Building with multiple data sources
+    - for this project I want to wrap two or more publicly available APIs with GraphQL
+    - I won't be creating these APIs and therefore they must be decently documented
+    - seems like if I want to use multiple data sources, I need multiple resolvers.
