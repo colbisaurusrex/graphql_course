@@ -152,6 +152,8 @@ This section is a good example of how to ensure business logic is delegated to a
 
 Remember, the ApolloClient is just the piece of technology that interfaces with our backend; it has no idea how to interface with out React application. That is the job of the Apollo Provider - a glue layer between the Apollo Client that fetches all the data and our React client that displays all the data.
 
+Network Interface - must configure the Apollo Client to attach auth cookie to request. In practice, this is simple boilerplate code added to the config object that is passed to the ApolloClient instance. 
+
 ## My app
 
 - Building with multiple data sources
