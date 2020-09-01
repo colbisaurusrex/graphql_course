@@ -1,3 +1,4 @@
+These are my notes and follow along code from Udemy's [GraphQL with React: The Complete Developers Guide](https://www.udemy.com/course/graphql-with-react-course/learn/lecture/6523046#content)
 # Course notes
 
 ## RESTful - routing
